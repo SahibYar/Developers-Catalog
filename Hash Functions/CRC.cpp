@@ -40,15 +40,20 @@ int main()
 	bitset<L + (N - 1)> sending_stream(input.to_string());
 	sending_stream <<= N - 1;
 
+	bitset<N - 1> crc = CRC(sending_stream, bitset<N>(crcg));
+	bitset<L + (N - 1)> transmitted_frame(crc.to_string());
+	transmitted_frame |= sending_stream;
+
 	cout << "Orignal Data: " << input << endl;
-	cout << "Sending Data: " << sending_stream << endl;
 	cout << "CRC Generator: " << crcg << endl;
-	cout << "CRC: " << CRC(sending_stream, bitset<N>(crcg)) << endl;
-	system("PAUSE");
+	cout << "CRC: " << crc << endl;
+	cout << "Transmitted Frame: " << transmitted_frame << endl;
+	return 0;
 }
-/************OUTPUT*******************************
-Orignal Data : 0000000001111111
-Sending Data : 0000000001111111000
-CRC Generator : 1001
-CRC : 001
-*************************************************/
+
+/***************OUTPUT**********************
+Orignal Data:		0000000001111111
+CRC Generator:	1001
+CRC:				001
+Transmitted Frame:0000000001111111001
+*******************************************/
