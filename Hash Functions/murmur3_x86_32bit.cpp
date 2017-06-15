@@ -77,7 +77,7 @@ unsigned int MurmurHash3(string data, unsigned int seed)
 
 int main()
 {
-	string data = "Sahib Yas";
+	string data = "Sahib Yar";
 	unsigned int seed = 123;
 
 	cout << "MurmurHash3(\"Sahib Yar\", 123) = " << MurmurHash3(data, seed) << endl;
